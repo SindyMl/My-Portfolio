@@ -13,7 +13,7 @@ export default function Hero() {
       setCurrentText((prev) => (prev + 1) % texts.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [texts.length]);
 
   return (
     <section
