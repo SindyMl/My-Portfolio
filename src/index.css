@@ -7,7 +7,12 @@
     font-family: 'Roboto', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Montserrat', sans-serif;
   }
 }
@@ -63,6 +68,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -80,4 +86,73 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom animations for Hero section */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+@keyframes float-slow {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+}
+
+.floating-shape {
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.animate-float {
+  animation-name: float;
+}
+
+.animate-float-delayed {
+  animation-name: float-delayed;
+  animation-delay: 2s;
+}
+
+.animate-float-slow {
+  animation-name: float-slow;
+  animation-duration: 8s;
+  animation-delay: 1s;
+}
+
+/* Typewriter effect */
+.typewriter {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Enhanced gradient border */
+.border-gradient {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #D4AF37, #2E7D32, #9333EA) 1;
 }

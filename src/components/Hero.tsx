@@ -1,64 +1,124 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Sparkles, Code, Zap } from 'lucide-react';
+import logo from '../images/logo.png';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentText, setCurrentText] = useState(0);
+  const texts = ['Developer', 'HealthTech Innovator', 'Problem Solver', 'Tech Enthusiast'];
 
   useEffect(() => {
     setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentText((prev) => (prev + 1) % texts.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #4A0E1A 0%, #2E7D32 100%)',
-      }}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
     >
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-emerald rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-gold rounded-full animate-ping"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-emerald rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 left-3/4 w-3 h-3 bg-gold/50 rounded-full animate-bounce"></div>
+        <Sparkles className="absolute top-20 right-20 text-gold/30 animate-pulse" size={24} />
+        <Code className="absolute bottom-20 left-20 text-emerald/30 animate-bounce" size={20} />
+        <Zap className="absolute top-1/3 right-1/3 text-purple-400/30 animate-pulse" size={18} />
       </div>
 
-      <div className={`relative z-10 text-center px-4 max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      {/* Floating geometric shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="floating-shape absolute top-20 left-10 w-20 h-20 border-2 border-gold/20 rotate-45 animate-float"></div>
+        <div className="floating-shape absolute bottom-32 right-20 w-16 h-16 border-2 border-emerald/20 rounded-full animate-float-delayed"></div>
+        <div className="floating-shape absolute top-1/2 left-20 w-12 h-12 bg-gradient-to-r from-purple-500/10 to-gold/10 transform rotate-12 animate-float-slow"></div>
+      </div>
+
+      <div className={`relative z-10 text-center px-4 max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Logo Section */}
         <div className="mb-8 flex justify-center">
-          <div className="relative w-40 h-40 sm:w-48 sm:h-48">
-            <div className="absolute inset-0 bg-gold rounded-full animate-pulse opacity-50"></div>
-            <div className="relative w-full h-full bg-gradient-to-br from-gold to-emerald rounded-full flex items-center justify-center text-6xl sm:text-7xl font-bold text-burgundy">
-              SM
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-gradient-to-r from-gold via-gold to-gold/70 rounded-full blur-lg opacity-40 group-hover:opacity-70 animate-pulse transition-opacity duration-300"></div>
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-gold shadow-2xl">
+              <img
+                src={logo}
+                alt="Business Logo"
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-ivory mb-4">
-          Sindy Ml
-        </h1>
-        <p className="text-xl sm:text-2xl md:text-3xl text-gold mb-6 font-semibold">
-          Developer & HealthTech Innovator
-        </p>
-        <p className="text-base sm:text-lg md:text-xl text-ivory/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-          Building mobile and web apps with AI solutions—open to bringing any tech idea to life!
-        </p>
+        {/* Dynamic Text Header */}
+        <div className="mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gold mb-4 tracking-tight drop-shadow-lg">
+            Sindiswa Chantell Mulondo
+          </h1>
+          <div className="h-16 flex items-center justify-center">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white/90 typewriter">
+              <span className="inline-block min-w-0 transition-all duration-500">
+                {texts[currentText]}
+              </span>
+              <span className="animate-pulse text-gold">|</span>
+            </p>
+          </div>
+        </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* Description with unique styling */}
+        <div className="mb-12 max-w-4xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6">
+            Building mobile and web apps with
+            <span className="text-gold font-semibold"> AI solutions</span>—open to bringing any
+            <span className="text-gold font-semibold"> tech idea</span> to life!
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 text-sm sm:text-base">
+            <span className="px-4 py-2 bg-gold/20 rounded-full border border-gold/50 text-gold font-semibold">
+              Mobile Development
+            </span>
+            <span className="px-4 py-2 bg-gold/20 rounded-full border border-gold/50 text-gold font-semibold">
+              Web Applications
+            </span>
+            <span className="px-4 py-2 bg-gold/20 rounded-full border border-gold/50 text-gold font-semibold">
+              AI Integration
+            </span>
+          </div>
+        </div>
+
+        {/* CTA Buttons with enhanced design */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
           <a
             href="#projects"
-            className="bg-gold text-burgundy px-8 py-4 rounded-lg font-semibold text-lg hover-glow transition-all duration-300 w-full sm:w-auto"
+            className="group relative px-8 py-4 font-bold text-lg rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl w-full sm:w-auto"
+            style={{
+              backgroundColor: '#D4AF37',
+              color: '#1B5E20'
+            }}
           >
-            View Projects
+            <span className="relative z-10">View Projects</span>
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: 'rgba(212, 175, 55, 0.9)' }}></div>
           </a>
           <a
             href="#business"
-            className="bg-transparent border-2 border-gold text-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold hover:text-burgundy transition-all duration-300 w-full sm:w-auto"
+            className="group relative px-8 py-4 bg-transparent border-2 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto"
+            style={{
+              borderColor: '#D4AF37'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.2)'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
           >
-            Explore Business
+            <span className="relative z-10">Explore Business</span>
           </a>
         </div>
 
-        <div className="mt-16 animate-bounce">
-          <ChevronDown className="h-8 w-8 text-gold mx-auto" />
+        {/* Enhanced scroll indicator */}
+        <div className="flex flex-col items-center space-y-2">
+          <p className="text-white/70 text-sm tracking-wider">SCROLL TO EXPLORE</p>
+          <div className="animate-bounce p-2 rounded-full" style={{ backgroundColor: '#D4AF37' }}>
+            <ChevronDown className="h-6 w-6" style={{ color: '#1B5E20' }} />
+          </div>
         </div>
       </div>
     </section>

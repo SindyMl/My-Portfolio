@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Smartphone, Globe, Brain, HeartPulse, CheckCircle, Star } from 'lucide-react';
+import { Smartphone, Globe, Brain, HeartPulse, CheckCircle } from 'lucide-react';
 
 export default function Business() {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,20 +45,7 @@ export default function Business() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: 'Client A',
-      role: 'Startup Founder',
-      text: 'Exceptional work! Sindy delivered our mobile app ahead of schedule with top-notch quality.',
-      rating: 5,
-    },
-    {
-      name: 'Client B',
-      role: 'Healthcare Provider',
-      text: 'The healthtech solution transformed our patient engagement. Highly recommended!',
-      rating: 5,
-    },
-  ];
+
 
   return (
     <section
@@ -119,31 +106,6 @@ export default function Business() {
                 >
                   <CheckCircle className="h-6 w-6 text-emerald flex-shrink-0 mt-1" />
                   <span className="text-gray-700 text-lg">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h3 className="text-3xl font-bold text-ivory mb-8 text-center">
-              Client Testimonials
-            </h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg p-6 shadow-xl"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-gold fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="font-bold text-burgundy">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  </div>
                 </div>
               ))}
             </div>

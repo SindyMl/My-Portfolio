@@ -23,15 +23,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-burgundy shadow-lg' : 'bg-burgundy/90 backdrop-blur-sm'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-900/95 shadow-2xl border-b border-gold/20' : 'bg-transparent'
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center space-x-2 group">
-            <Code2 className="h-8 w-8 text-gold transition-transform group-hover:scale-110" />
-            <span className="text-xl font-bold text-gold">SCM HealthTech</span>
+          <a href="#home" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-gold to-emerald rounded-full blur opacity-30 group-hover:opacity-60 transition-opacity"></div>
+              <Code2 className="relative h-8 w-8 text-gold transition-transform group-hover:scale-110 group-hover:rotate-12" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-gold to-emerald bg-clip-text text-transparent">SCM HealthTech</span>
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -39,9 +41,10 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-ivory hover:text-gold transition-colors duration-200 font-medium"
+                className="relative text-white hover:text-gold transition-all duration-300 font-medium group"
               >
-                {link.label}
+                <span className="relative z-10">{link.label}</span>
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gold to-emerald group-hover:w-full transition-all duration-300"></div>
               </a>
             ))}
           </div>

@@ -3,13 +3,6 @@ import { Mail, Phone, Github, MapPin } from 'lucide-react';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -27,50 +20,18 @@ export default function Contact() {
     }
 
     return () => observer.disconnect();
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormState({ name: '', email: '', subject: '', message: '' });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const contactInfo = [
+  }, []);  const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: 'contact@scmhealthtech.com',
-      href: 'mailto:contact@scmhealthtech.com',
+      value: 'sindiswamulondo@gmail.com',
+      href: 'mailto:sindiswamulondo@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+27 123 456 7890',
-      href: 'tel:+27123456789',
+      value: '+27 60 915 7967',
+      href: 'tel:+27609157967',
     },
     {
       icon: Github,
@@ -135,91 +96,26 @@ export default function Contact() {
               </div>
             </div>
 
-            <div>
-              <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-xl p-8">
-                <div className="mb-4">
-                  <label htmlFor="name" className="block text-burgundy font-semibold mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formState.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald focus:outline-none transition-colors"
-                    placeholder="Your name"
-                  />
+            <div className="bg-white rounded-lg shadow-xl p-8">
+              <h4 className="text-2xl font-bold text-burgundy mb-6 text-center">Ready to Start Your Project?</h4>
+              <div className="text-center space-y-4">
+                <p className="text-gray-700 text-lg">
+                  I'm available for freelance projects and collaborations. Let's discuss how we can bring your ideas to life!
+                </p>
+                <div className="bg-gradient-to-r from-gold/10 to-emerald/10 rounded-lg p-6 border-2 border-gold/20">
+                  <p className="font-semibold text-burgundy mb-2">Preferred Contact Method:</p>
+                  <a 
+                    href="mailto:sindiswamulondo@gmail.com" 
+                    className="inline-flex items-center gap-2 bg-gold text-burgundy px-6 py-3 rounded-lg font-bold text-lg hover-glow transition-all duration-300"
+                  >
+                    <Mail className="h-5 w-5" />
+                    Email Me Directly
+                  </a>
                 </div>
-
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-burgundy font-semibold mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formState.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald focus:outline-none transition-colors"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="subject" className="block text-burgundy font-semibold mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formState.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald focus:outline-none transition-colors"
-                    placeholder="Project inquiry"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-burgundy font-semibold mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-emerald focus:outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
-                  ></textarea>
-                </div>
-
-                {submitStatus === 'success' && (
-                  <div className="mb-4 p-4 bg-emerald/10 border border-emerald rounded-lg text-emerald">
-                    Message sent successfully! I'll get back to you soon.
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="mb-4 p-4 bg-red-50 border border-red-300 rounded-lg text-red-600">
-                    Failed to send message. Please try again or email directly.
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  className="w-full bg-gold text-burgundy py-4 rounded-lg font-bold text-lg hover-glow transition-all duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
+                <p className="text-sm text-gray-600">
+                  Response time: Usually within 24 hours
+                </p>
+              </div>
             </div>
           </div>
         </div>
