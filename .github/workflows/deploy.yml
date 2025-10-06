@@ -1,0 +1,5 @@
+# Manual Deployment Instructions
+# Due to repository action restrictions, deploy manually using:
+# npm run deploy
+#
+# This will build and push to gh-pages branch automatically
