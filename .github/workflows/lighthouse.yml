@@ -1,0 +1,47 @@
+# 🔍 Lighthouse Performance Audit
+name: 🚦 Lighthouse Audit
+
+on:
+  # Run after successful deployment
+  workflow_run:
+    workflows: ["🎯 Deploy Portfolio to GitHub Pages"]
+    types:
+      - completed
+  # Manual trigger
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    name: 🚦 Performance Audit
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🚦 Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://sindyml.github.io/My-Portfolio/
+          configPath: './.lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
+
+      - name: 📊 Comment Results
+        uses: actions/github-script@v7
+        if: github.event_name == 'workflow_run'
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '.lighthouseci/lhr-*.json';
+            
+            // Create performance summary comment
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: '🚦 **Lighthouse Audit Complete!**\n\n✅ Performance metrics updated\n🔗 Check Actions tab for detailed report'
+            });

@@ -6,9 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "clean": "rm -rf dist",
+    "build:analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html",
+    "deploy": "npm run build && gh-pages -d dist",
+    "prepare": "npm run typecheck && npm run lint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

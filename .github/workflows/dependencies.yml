@@ -1,0 +1,55 @@
+# 🔄 Automated Dependency Updates
+name: 🔄 Update Dependencies
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    name: 🔄 Check & Update Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 🔍 Check for updates
+        run: |
+          echo "📊 Current dependencies:"
+          npm outdated || true
+          
+          echo "🔍 Security audit:"
+          npm audit --audit-level=high || true
+
+      - name: 🛡️ Fix security issues
+        run: |
+          npm audit fix --audit-level=high || true
+
+      - name: 📤 Create PR if updates available
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '🔄 Update dependencies and fix security issues'
+          title: '🔄 Automated Dependency Updates'
+          body: |
+            🤖 **Automated dependency update**
+            
+            This PR contains:
+            - 🔄 Updated npm dependencies
+            - 🛡️ Security vulnerability fixes
+            - 📊 Audit report improvements
+            
+            Please review and merge if tests pass.
+          branch: update-dependencies
+          delete-branch: true
