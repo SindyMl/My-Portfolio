@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-burgundy {
+    color: #4A0E1A;
+  }
+
+  .text-gold {
+    color: #D4AF37;
+  }
+
+  .text-emerald {
+    color: #2E7D32;
+  }
+
+  .text-ivory {
+    color: #F8F1E9;
+  }
+
+  .bg-burgundy {
+    background-color: #4A0E1A;
+  }
+
+  .bg-gold {
+    background-color: #D4AF37;
+  }
+
+  .bg-emerald {
+    background-color: #2E7D32;
+  }
+
+  .bg-ivory {
+    background-color: #F8F1E9;
+  }
+
+  .border-gold {
+    border-color: #D4AF37;
+  }
+
+  .border-emerald {
+    border-color: #2E7D32;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  transform: scale(1.02);
+}
+
+html {
+  scroll-behavior: smooth;
+}
