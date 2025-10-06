@@ -32,14 +32,14 @@ export default function About() {
     { name: 'HTML/CSS', icon: Globe, color: 'text-emerald' },
     { name: 'React', icon: Globe, color: 'text-emerald' },
     { name: 'Flutter', icon: Smartphone, color: 'text-emerald' },
-    
+
     // Backend Technologies
     { name: 'PHP', icon: Database, color: 'text-purple-600' },
     { name: 'SQL', icon: Database, color: 'text-purple-600' },
     { name: 'Firebase', icon: Database, color: 'text-purple-600' },
     { name: 'LAMP Server', icon: Database, color: 'text-purple-600' },
     { name: 'Django', icon: Database, color: 'text-purple-600' },
-    
+
     // AI & Others
     { name: 'ML Basics', icon: Brain, color: 'text-gold' },
   ];

@@ -20,7 +20,7 @@ export default function Contact() {
     }
 
     return () => observer.disconnect();
-  }, []);  const contactInfo = [
+  }, []); const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
@@ -104,8 +104,8 @@ export default function Contact() {
                 </p>
                 <div className="bg-gradient-to-r from-gold/10 to-emerald/10 rounded-lg p-6 border-2 border-gold/20">
                   <p className="font-semibold text-burgundy mb-2">Preferred Contact Method:</p>
-                  <a 
-                    href="mailto:sindiswamulondo@gmail.com" 
+                  <a
+                    href="mailto:sindiswamulondo@gmail.com"
                     className="inline-flex items-center gap-2 bg-gold text-burgundy px-6 py-3 rounded-lg font-bold text-lg hover-glow transition-all duration-300"
                   >
                     <Mail className="h-5 w-5" />
