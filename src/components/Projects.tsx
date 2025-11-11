@@ -34,38 +34,90 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    // CUSTOMIZE YOUR PROJECTS HERE:
-    // To show different GitHub repositories, simply update the entries below
-    // Change the name, description, techStack, githubUrl, and language for each project
+    // Complete list of all GitHub repositories
     const selectedProjects: Project[] = [
       {
+        name: 'YouthMind',
+        description: 'YouthMind Shield: AI-powered mobile app for South African youth (15-24) tackling mental health crises linked to unemployment & poverty. Features daily mood tracking, burnout risk predictions, and gamification.',
+        techStack: ['Dart', 'Flutter', 'AI/ML', 'Firebase'],
+        githubUrl: 'https://github.com/SindyMl/YouthMind',
+        demoUrl: 'private',
+        language: 'Dart',
+      },
+      {
         name: 'Snake-AI',
-        description: 'Intelligent AI agent for Snake game featuring advanced pathfinding algorithms and decision-making logic to navigate and maximize score.',
-        techStack: ['Java', 'AI Algorithms', 'Pathfinding'],
+        description: 'AI-powered Java agent for Wits Snake competition! Uses A* pathfinding for shortest routes to fresh apples (>0 value), evasive maneuvers (2-step lookahead) to dodge walls/enemies/longer snakes.',
+        techStack: ['Java', 'A* Algorithm', 'AI'],
         githubUrl: 'https://github.com/SindyMl/Snake-AI',
         language: 'Java',
       },
       {
-        name: 'POS System',
-        description: 'Comprehensive Flutter-based Point of Sale system with inventory management, real-time synchronization, and intuitive user interface.',
+        name: 'Estate Management App',
+        description: 'Streamlines post-death administration. Securely connects families, legal representatives, and institutions to automate notifications, document submission, and process tracking.',
         techStack: ['Dart', 'Flutter', 'Firebase'],
+        githubUrl: 'https://github.com/SindyMl/estate_management_app',
+        demoUrl: 'private',
+        language: 'Dart',
+      },
+      {
+        name: 'POS System',
+        description: 'Modern Flutter-based Point of Sale system for retail businesses. Features real-time sales processing, barcode scanning, inventory management, Firebase cloud sync, multi-payment support (cash/card).',
+        techStack: ['Dart', 'Flutter', 'Firebase', 'Barcode Scanning'],
         githubUrl: 'https://github.com/SindyMl/pos',
         language: 'Dart',
       },
       {
+        name: 'Hills Motors React',
+        description: 'Modern car dealership management system built with React 18, TypeScript & Redux. Features dynamic vehicle catalog with live API specs, comprehensive admin dashboard with analytics, responsive design.',
+        techStack: ['TypeScript', 'React', 'Redux', 'Tailwind CSS'],
+        githubUrl: 'https://github.com/SindyMl/Hills-Motors-React',
+        demoUrl: 'private',
+        language: 'TypeScript',
+      },
+      {
         name: 'MobileMarket',
-        description: 'Android marketplace application enabling users to buy and sell products with secure transactions and user-friendly interface.',
-        techStack: ['Java', 'Android SDK', 'Firebase'],
-        githubUrl: 'https://github.com/SindyMl/MobileMarket',
+        description: 'Modern Android app for buying and selling items locally. Users can register, log in, browse listings, post products for sale, and search for items. Features a clean interface and secure authentication.',
+        techStack: ['Java', 'Android', 'Firebase', 'Real-time Database'],
+        githubUrl: 'https://github.com/SindyMl/Mobilemarket',
         language: 'Java',
       },
       {
-        name: 'EstateMobile App',
-        description: 'Mobile application for real estate management with property listings, client management, and booking system.',
-        techStack: ['Flutter', 'Dart', 'Firebase'],
-        githubUrl: 'https://github.com/SindyMl/Estatemobile_app',
+        name: 'Ukuthula',
+        description: 'Discreet mobile application designed to address critical challenges of personal safety and access to justice. Provides a secure and reliable way for individuals to proactively create a safe environment.',
+        techStack: ['Dart', 'Flutter', 'Emergency Services'],
+        githubUrl: 'https://github.com/SindyMl/Ukuthula',
         demoUrl: 'private',
         language: 'Dart',
+      },
+      {
+        name: 'Aegis',
+        description: 'Enhance personal safety with this innovative app. Instantly connect with emergency services & contacts via SOS alerts. Securely store vital medical info for critical situations.',
+        techStack: ['Mobile Development', 'Emergency Services', 'Security'],
+        githubUrl: 'https://github.com/SindyMl/Aegis',
+        demoUrl: 'private',
+        language: 'Mobile',
+      },
+      {
+        name: 'AgriConnect',
+        description: 'Empowers South African farmers with real-time crop prices and daily tips. Built with Flutter and Firebase, offers a simple, elegant UI and AdMob monetization.',
+        techStack: ['JavaScript', 'Flutter', 'Firebase', 'AdMob'],
+        githubUrl: 'https://github.com/SindyMl/AgriConnect',
+        demoUrl: 'private',
+        language: 'JavaScript',
+      },
+      {
+        name: 'Shadow Economy Micro-Task Marketplace',
+        description: 'Web app addressing lack of micro-job access for informal workers across South Africa. Connects workers with micro-tasks, enabling income generation in the informal economy.',
+        techStack: ['JavaScript', 'Web Development', 'Marketplace'],
+        githubUrl: 'https://github.com/SindyMl/Shadow-Economy-Micro-Task-Marketplace',
+        language: 'JavaScript',
+      },
+      {
+        name: 'Symptom Tracker',
+        description: 'Healthcare application for tracking symptoms, monitoring health patterns, and generating health reports for medical consultation.',
+        techStack: ['TypeScript', 'React', 'Healthcare'],
+        githubUrl: 'https://github.com/SindyMl/Symptom_Tracker',
+        language: 'TypeScript',
       },
       {
         name: 'Prodigy',
@@ -76,32 +128,66 @@ export default function Projects() {
       },
       {
         name: 'Tshanduko Still Water',
-        description: 'Water management system for tracking and monitoring still water resources with data visualization and reporting.',
-        techStack: ['JavaScript', 'React', 'Node.js'],
+        description: 'Discover the Tshanduko Still Water App, a sleek platform bringing pure hydration to Dzingahe. Features water-themed design and animations. Explore 500ml, 1L, 10L, and 25L purified bottle options.',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'Animations'],
         githubUrl: 'https://github.com/SindyMl/Tshanduko-Still-Water',
-        language: 'JavaScript',
-      },
-      {
-        name: 'Symptom Tracker',
-        description: 'Healthcare application for tracking symptoms, monitoring health patterns, and generating health reports for medical consultation.',
-        techStack: ['React', 'Firebase', 'Chart.js'],
-        githubUrl: 'https://github.com/SindyMl/Symptom_Tracker',
-        language: 'JavaScript',
+        language: 'HTML',
       },
       {
         name: 'ElectroLearn',
-        description: 'Educational platform for electronics learning with interactive tutorials, circuit simulations, and progress tracking.',
-        techStack: ['React', 'Node.js', 'MongoDB'],
+        description: 'Tablet-optimized Flutter app for transitioning to Nated Electrical Engineering (N4-N6, Heavy Current). Offers study resources, circuit simulations, planner, progress tracking, Q&A, and LinkedIn-verification.',
+        techStack: ['C++', 'Flutter', 'Education'],
         githubUrl: 'https://github.com/SindyMl/ElectroLearn',
+        language: 'C++',
+      },
+      {
+        name: 'Study Resource Tracker',
+        description: 'Mobile application that allows users to add, categorize, and search for study resources (e.g., PDFs, links, or notes) by course or topic. Simple tool tailored to students.',
+        techStack: ['JavaScript', 'Mobile', 'Education'],
+        githubUrl: 'https://github.com/SindyMl/Study-Resource-Tracker',
         language: 'JavaScript',
       },
       {
-        name: 'Hills Motors React',
-        description: 'Motor dealership website with vehicle inventory management, customer portal, and online booking system.',
-        techStack: ['React', 'TypeScript', 'Tailwind CSS'],
-        githubUrl: 'https://github.com/SindyMl/Hills-Motors-React',
-        demoUrl: 'private',
-        language: 'TypeScript',
+        name: 'Community Event Finder',
+        description: 'Simple web app that allows users to view and filter upcoming events based on categories (e.g., tech, career fairs, social) and location (e.g., Johannesburg or Cape Town).',
+        techStack: ['HTML', 'CSS', 'JavaScript'],
+        githubUrl: 'https://github.com/SindyMl/Community-Event-Finder',
+        language: 'HTML',
+      },
+      {
+        name: 'Analysis of Algorithms',
+        description: 'Course on problem solving covering Complexity Analysis and Graphs. Problems include: Scheduling, Matching, Path Planning, Project Planning, and Fault Tolerance.',
+        techStack: ['Java', 'Algorithms', 'Data Structures'],
+        githubUrl: 'https://github.com/SindyMl/Analysis-of-Algorithms',
+        language: 'Java',
+      },
+      {
+        name: 'DishCovery',
+        description: 'Combines "dish" with "discovery," highlighting recipe exploration. Designed to help users discover recipes, plan meals, and track dietary habits, promoting healthier eating patterns.',
+        techStack: ['Java', 'Mobile', 'Food & Health'],
+        githubUrl: 'https://github.com/SindyMl/DishCovery',
+        language: 'Java',
+      },
+      {
+        name: 'FNB Academy 2025',
+        description: 'Projects created from the FNB App of the Year Academy 2025.',
+        techStack: ['HTML', 'Web Development'],
+        githubUrl: 'https://github.com/SindyMl/Fnb-Academy-2025',
+        language: 'HTML',
+      },
+      {
+        name: 'C++ 1st Year Projects',
+        description: 'Collection of C++ projects from first year computer science studies.',
+        techStack: ['C++', 'Academic'],
+        githubUrl: 'https://github.com/SindyMl/CPlusPlus-1st-year-projects',
+        language: 'C++',
+      },
+      {
+        name: 'Python 1st Year Projects',
+        description: 'Collection of Python projects from first year computer science studies.',
+        techStack: ['Python', 'Academic'],
+        githubUrl: 'https://github.com/SindyMl/Python-1st-year-projects',
+        language: 'Python',
       },
     ];
 
@@ -149,8 +235,17 @@ export default function Projects() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="bg-gradient-to-r from-burgundy to-emerald p-4">
-                    <h3 className="text-xl font-bold text-ivory">{project.name}</h3>
-                    <span className="text-xs text-gold font-medium">{project.language}</span>
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-ivory">{project.name}</h3>
+                        <span className="text-xs text-gold font-medium">{project.language}</span>
+                      </div>
+                      {project.demoUrl === 'private' && (
+                        <span className="bg-gold/20 text-ivory px-2 py-1 rounded text-xs font-semibold border border-gold/30">
+                          Private
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="p-6">
