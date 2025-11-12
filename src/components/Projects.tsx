@@ -199,10 +199,11 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="py-20 bg-gradient-to-br from-slate-100 via-white to-purple-50 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-100 via-white to-purple-50 relative overflow-hidden min-h-screen"
+      style={{ backgroundColor: '#f8fafc' }}
     >
       {/* Background decorative elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-20 w-28 h-28 bg-gradient-to-r from-purple-500/10 to-gold/10 rounded-full blur-2xl"></div>
         <div className="absolute bottom-10 left-20 w-36 h-36 bg-gradient-to-r from-emerald/10 to-purple-500/10 rounded-full blur-2xl"></div>
       </div>
@@ -210,11 +211,11 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-slate-800 via-purple-800 to-slate-800 bg-clip-text text-transparent mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4">
               Featured Projects
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-gold to-emerald mx-auto rounded-full mb-6"></div>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed px-4">
               A showcase of innovative solutions spanning <span className="text-purple-700 font-semibold">AI</span>,
               <span className="text-emerald-700 font-semibold"> mobile</span>, and
               <span className="text-gold font-semibold"> web development</span>
@@ -224,14 +225,14 @@ export default function Projects() {
           {isLoading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-emerald border-t-gold"></div>
-              <p className="mt-4 text-gray-600">Loading projects...</p>
+              <p className="mt-4 text-gray-800">Loading projects...</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {projects.map((project, index) => (
                 <div
                   key={project.name}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover-glow border-2 border-transparent hover:border-gold transition-all duration-300"
+                  className="bg-white rounded-lg shadow-lg overflow-hidden hover-glow border-2 border-gray-100 hover:border-gold transition-all duration-300"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="bg-gradient-to-r from-burgundy to-emerald p-4">
