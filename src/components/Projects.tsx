@@ -199,8 +199,8 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-100 via-white to-purple-50 relative overflow-hidden min-h-screen"
-      style={{ backgroundColor: '#f8fafc' }}
+      className="py-10 sm:py-16 md:py-20 bg-gradient-to-br from-slate-100 via-white to-purple-50 relative overflow-hidden"
+      style={{ backgroundColor: '#f8fafc', minHeight: '100vh' }}
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -208,10 +208,10 @@ export default function Projects() {
         <div className="absolute bottom-10 left-20 w-36 h-36 bg-gradient-to-r from-emerald/10 to-purple-500/10 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-3 sm:mb-4">
               Featured Projects
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-gold to-emerald mx-auto rounded-full mb-6"></div>
@@ -228,11 +228,11 @@ export default function Projects() {
               <p className="mt-4 text-gray-800">Loading projects...</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0">
               {projects.map((project, index) => (
                 <div
                   key={project.name}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover-glow border-2 border-gray-100 hover:border-gold transition-all duration-300"
+                  className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 hover:border-gold transition-all duration-300 w-full"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="bg-gradient-to-r from-burgundy to-emerald p-4">
@@ -249,14 +249,14 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <p className="text-gray-700 mb-4 min-h-[100px]">{project.description}</p>
+                  <div className="p-4 sm:p-6">
+                    <p className="text-gray-800 mb-4 text-sm sm:text-base leading-relaxed">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-emerald/10 text-emerald text-sm rounded-full font-medium"
+                          className="px-2 sm:px-3 py-1 bg-emerald/10 text-emerald text-xs sm:text-sm rounded-full font-medium"
                         >
                           {tech}
                         </span>
