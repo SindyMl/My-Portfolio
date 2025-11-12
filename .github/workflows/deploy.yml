@@ -1,16 +1,14 @@
-# Manual Deployment Workflow (Disabled)
-# Due to repository action restrictions, deploy manually using: npm run deploy
-name: Manual Deployment
+name: Manual Deployment Info
 
 on:
   workflow_dispatch:
 
 jobs:
-  info:
+  deployment-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Deployment Info
+      - name: Show Deployment Instructions
         run: |
-          echo "This portfolio uses manual deployment with gh-pages"
-          echo "To deploy, run: npm run deploy"
-          echo "Live at: https://sindyml.github.io/My-Portfolio/"
+          echo "Portfolio uses manual deployment with gh-pages package"
+          echo "To deploy updates, run: npm run deploy"
+          echo "Live site: https://sindyml.github.io/My-Portfolio/"
