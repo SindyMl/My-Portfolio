@@ -199,85 +199,85 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="py-10 sm:py-16 md:py-20 bg-gradient-to-br from-slate-100 via-white to-purple-50 relative overflow-hidden"
-      style={{ backgroundColor: '#f8fafc', minHeight: '100vh' }}
+      className="py-12 sm:py-16 md:py-20 bg-white"
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-20 w-28 h-28 bg-gradient-to-r from-purple-500/10 to-gold/10 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-10 left-20 w-36 h-36 bg-gradient-to-r from-emerald/10 to-purple-500/10 rounded-full blur-2xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-3 sm:mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Section Header */}
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Featured Projects
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-gold to-emerald mx-auto rounded-full mb-6"></div>
-            <p className="text-base sm:text-lg md:text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed px-4">
-              A showcase of innovative solutions spanning <span className="text-purple-700 font-semibold">AI</span>,
-              <span className="text-emerald-700 font-semibold"> mobile</span>, and
-              <span className="text-gold font-semibold"> web development</span>
+            <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-emerald-500 mx-auto rounded-full mb-4"></div>
+            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto">
+              A showcase of innovative solutions spanning <span className="text-purple-600 font-semibold">AI</span>,{' '}
+              <span className="text-emerald-600 font-semibold">mobile</span>, and{' '}
+              <span className="text-amber-600 font-semibold">web development</span>
             </p>
           </div>
 
+          {/* Projects Grid */}
           {isLoading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-emerald border-t-gold"></div>
-              <p className="mt-4 text-gray-800">Loading projects...</p>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-emerald-500 border-t-purple-600"></div>
+              <p className="mt-4 text-gray-700">Loading projects...</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project, index) => (
                 <div
-                  key={project.name}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 hover:border-gold transition-all duration-300 w-full"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  key={`${project.name}-${index}`}
+                  className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-200 hover:border-purple-400 transition-all duration-300 flex flex-col h-full"
                 >
-                  <div className="bg-gradient-to-r from-burgundy to-emerald p-4">
+                  {/* Card Header */}
+                  <div className="bg-gradient-to-r from-purple-600 to-emerald-500 p-4">
                     <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-ivory">{project.name}</h3>
-                        <span className="text-xs text-gold font-medium">{project.language}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-bold text-white truncate">{project.name}</h3>
+                        <span className="text-xs text-amber-200 font-medium">{project.language}</span>
                       </div>
                       {project.demoUrl === 'private' && (
-                        <span className="bg-gold/20 text-ivory px-2 py-1 rounded text-xs font-semibold border border-gold/30">
+                        <span className="bg-amber-400 text-purple-900 px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
                           Private
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="p-4 sm:p-6">
-                    <p className="text-gray-800 mb-4 text-sm sm:text-base leading-relaxed">{project.description}</p>
+                  {/* Card Body */}
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
+                      {project.description}
+                    </p>
 
+                    {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 sm:px-3 py-1 bg-emerald/10 text-emerald text-xs sm:text-sm rounded-full font-medium"
+                          className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex gap-3">
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 mt-auto">
                       {project.demoUrl === 'private' ? (
-                        <div className="flex items-center gap-2 bg-gray-500 text-ivory px-4 py-2 rounded-lg flex-1 justify-center cursor-not-allowed">
+                        <div className="flex items-center justify-center gap-2 bg-gray-400 text-white px-4 py-2.5 rounded-lg flex-1 text-sm font-medium">
                           <Github className="h-4 w-4" />
-                          <span className="text-sm font-medium">Repository is Private</span>
+                          <span>Private Repo</span>
                         </div>
                       ) : (
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 bg-burgundy text-ivory px-4 py-2 rounded-lg hover:bg-emerald transition-colors duration-300 flex-1 justify-center"
+                          className="flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2.5 rounded-lg hover:bg-purple-700 transition-colors duration-200 flex-1 text-sm font-medium"
                         >
                           <Github className="h-4 w-4" />
-                          <span className="text-sm font-medium">Code</span>
+                          <span>View Code</span>
                         </a>
                       )}
                       {project.demoUrl && project.demoUrl !== 'private' && (
@@ -285,10 +285,10 @@ export default function Projects() {
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 bg-gold text-burgundy px-4 py-2 rounded-lg hover:bg-emerald hover:text-ivory transition-colors duration-300"
+                          className="flex items-center justify-center gap-2 bg-emerald-500 text-white px-4 py-2.5 rounded-lg hover:bg-emerald-600 transition-colors duration-200 text-sm font-medium"
                         >
                           <ExternalLink className="h-4 w-4" />
-                          <span className="text-sm font-medium">Demo</span>
+                          <span>Live Demo</span>
                         </a>
                       )}
                     </div>
