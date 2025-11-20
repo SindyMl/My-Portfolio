@@ -14,6 +14,7 @@ export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [displayCount, setDisplayCount] = useState(6); // Show 6 projects initially on mobile
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -223,79 +224,93 @@ export default function Projects() {
               <p className="mt-4 text-gray-700">Loading projects...</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <div
-                  key={`${project.name}-${index}`}
-                  className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-200 hover:border-purple-400 transition-all duration-300 flex flex-col h-full"
-                >
-                  {/* Card Header */}
-                  <div className="bg-gradient-to-r from-purple-600 to-emerald-500 p-4">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-lg sm:text-xl font-bold text-white truncate">{project.name}</h3>
-                        <span className="text-xs text-amber-200 font-medium">{project.language}</span>
-                      </div>
-                      {project.demoUrl === 'private' && (
-                        <span className="bg-amber-400 text-purple-900 px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
-                          Private
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-2 mt-auto">
-                      {project.demoUrl === 'private' ? (
-                        <div className="flex items-center justify-center gap-2 bg-gray-400 text-white px-4 py-2.5 rounded-lg flex-1 text-sm font-medium">
-                          <Github className="h-4 w-4" />
-                          <span>Private Repo</span>
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.slice(0, displayCount).map((project, index) => (
+                  <div
+                    key={`${project.name}-${index}`}
+                    className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden border border-gray-200 hover:border-purple-400 transition-all duration-300 flex flex-col h-full"
+                  >
+                    {/* Card Header */}
+                    <div className="bg-gradient-to-r from-purple-600 to-emerald-500 p-4">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-lg sm:text-xl font-bold text-white truncate">{project.name}</h3>
+                          <span className="text-xs text-amber-200 font-medium">{project.language}</span>
                         </div>
-                      ) : (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2.5 rounded-lg hover:bg-purple-700 transition-colors duration-200 flex-1 text-sm font-medium"
-                        >
-                          <Github className="h-4 w-4" />
-                          <span>View Code</span>
-                        </a>
-                      )}
-                      {project.demoUrl && project.demoUrl !== 'private' && (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 bg-emerald-500 text-white px-4 py-2.5 rounded-lg hover:bg-emerald-600 transition-colors duration-200 text-sm font-medium"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          <span>Live Demo</span>
-                        </a>
-                      )}
+                        {project.demoUrl === 'private' && (
+                          <span className="bg-gray-800 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
+                            Private
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Card Body */}
+                    <div className="p-5 flex flex-col flex-1">
+                      <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
+                        {project.description}
+                      </p>
+
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-2 mt-auto">
+                        {project.demoUrl === 'private' ? (
+                          <div className="flex items-center justify-center gap-2 bg-gray-400 text-white px-4 py-2.5 rounded-lg flex-1 text-sm font-medium">
+                            <Github className="h-4 w-4" />
+                            <span>Private Repo</span>
+                          </div>
+                        ) : (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 bg-purple-600 text-white px-4 py-2.5 rounded-lg hover:bg-purple-700 transition-colors duration-200 flex-1 text-sm font-medium"
+                          >
+                            <Github className="h-4 w-4" />
+                            <span>View Code</span>
+                          </a>
+                        )}
+                        {project.demoUrl && project.demoUrl !== 'private' && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 bg-emerald-500 text-white px-4 py-2.5 rounded-lg hover:bg-emerald-600 transition-colors duration-200 text-sm font-medium"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            <span>Live Demo</span>
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Load More Button */}
+              {displayCount < projects.length && (
+                <div className="text-center mt-12">
+                  <button
+                    onClick={() => setDisplayCount(displayCount + 6)}
+                    className="bg-gradient-to-r from-purple-600 to-emerald-500 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    Load More Projects ({projects.length - displayCount} remaining)
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </div>
       </div>
